@@ -1,0 +1,27 @@
+{
+  "name": "screenx",
+  "version": "0.1.0",
+  "description": "CLI to open a browser page, take screenshots, inject scripts, and automate interactions.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "screenx": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "puppeteer",
+    "automation",
+    "screenshot",
+    "browser"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "puppeteer": "^22.12.1"
+  }
+}
