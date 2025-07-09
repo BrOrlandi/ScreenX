@@ -1,74 +1,73 @@
 # ScreenX
 
-O ScreenX é uma ferramenta de linha de comando (CLI) construída com Node.js e Puppeteer que permite automatizar interações com páginas web. Você pode abrir URLs, tirar screenshots, injetar scripts, preencher formulários e muito mais. É uma ferramenta versátil tanto para automação de tarefas por humanos quanto por agentes de IA.
+ScreenX is a command-line interface (CLI) tool built with Node.js and Puppeteer that allows you to automate interactions with web pages. You can open URLs, take screenshots, inject scripts, fill out forms, and much more. It's a versatile tool for both human-driven and AI-driven automation tasks.
 
-## Instalação
+## Installation
 
-Para utilizar o ScreenX, você precisa ter o Node.js instalado. Depois, basta clonar o repositório e instalar as dependências.
+To use ScreenX, you need to have Node.js installed. Then, simply clone the repository and install the dependencies.
 
 ```bash
-# Clone o repositório (substitua pela URL correta quando disponível)
-git clone https://github.com/seu-usuario/screenx.git
+# Clone the repository (replace with the correct URL when available)
+git clone https://github.com/BrOrlandi/ScreenX.git
 
-# Navegue até o diretório do projeto
-cd screenx
+# Navigate to the project directory
+cd ScreenX
 
-# Instale as dependências
+# Install dependencies
 npm install
 ```
 
-## Como Usar
+## Usage
 
-O comando base é simples. Você pode executá-lo diretamente com `node index.js` ou, após uma instalação global (`npm install -g .`), apenas com `screenx`.
+The base command is simple. You can run it directly with `node index.js` or, after a global installation (`npm install -g .`), just with `screenx`.
 
 ```bash
 node index.js [options] <url>
 ```
 
-### Exemplos de Uso
+### Usage Examples
 
-**1. Screenshot Simples**
+**1. Simple Screenshot**
 
-Tira um screenshot de uma página e salva em um arquivo.
+Takes a screenshot of a page and saves it to a file.
 
 ```bash
 node index.js --screenshot google.png https://google.com
 ```
 
-**2. Simulação de Formulário (Busca no Google)**
+**2. Form Simulation (Google Search)**
 
-Preenche um termo de busca no Google, pressiona Enter e tira um screenshot da página de resultados.
-
-```bash
-node index.js --screenshot resultados.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Inteligência Artificial"}, {"action":"press", "key":"Enter"}]' https://www.google.com
-```
-
-**3. Interação Humana (Resolver CAPTCHA)**
-
-Caso encontre um CAPTCHA, use o modo `--human`. O script irá pausar e exibir um botão de "Clique para continuar" na página, dando a você tempo para resolver o desafio antes de prosseguir.
+Fills a search term on Google, presses Enter, and takes a screenshot of the results page.
 
 ```bash
-node index.js --screenshot resultados-human.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Inteligência Artificial"}, {"action":"press", "key":"Enter"}]' --human https://www.google.com
+node index.js --screenshot results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' https://www.google.com
 ```
 
-## Parâmetros Disponíveis
+**3. Human Interaction (CAPTCHA Solving)**
 
-| Parâmetro | Descrição |
+If you encounter a CAPTCHA, use the `--human` mode. The script will pause and display a "Click to continue" button on the page, giving you time to solve the challenge before proceeding.
+
+```bash
+node index.js --screenshot human-results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' --human https://www.google.com
+```
+
+## Available Parameters
+
+| Parameter | Description |
 |---|---|
-| `<url>` | **Obrigatório.** URL da página a ser aberta (inclusive `localhost`). |
-| `--screenshot <path>` | Caminho onde o screenshot será salvo. |
-| `--fullpage` | Captura a página inteira, rolando-a automaticamente. |
-| `--scroll <px>` | Rola a página em X pixels antes de qualquer outra ação. |
-| `--resolution <WxH>` | Define a resolução do navegador (padrão: `1280x720`). |
-| `--inject-js <script>` | Código JavaScript (em formato de string) a ser executado na página. |
-| `--inject-js-file <path>` | Caminho para um arquivo `.js` com código a ser injetado. |
-| `--simulate-form <json>` | Preenche campos e executa ações com base em um array JSON. |
-| `--headless` | Executa o navegador em modo "headless", sem janela gráfica. |
-| `--human` | Aguarda o clique do usuário em um botão flutuante antes de continuar. |
-| `--delay <ms>` | Aguarda um tempo (em milissegundos) antes de prosseguir com as ações. |
-| `--timeout <ms>` | Define o tempo máximo de execução para o carregamento da página. |
-| `--output <json|text>` | Define o formato da saída (padrão: `text`). |
-| `--verbose` | Exibe logs detalhados de cada etapa da execução. |
-| `-h, --help` | Mostra a ajuda do CLI. |
-| `-v, --version` | Exibe a versão do ScreenX. |
-
+| `<url>` | **Required.** URL to open (including `localhost`). |
+| `--screenshot <path>` | Path where the screenshot will be saved. |
+| `--fullpage` | Captures the entire page by automatically scrolling. |
+| `--scroll <px>` | Scrolls the page by X pixels before any other action. |
+| `--resolution <WxH>` | Sets the browser window resolution (default: `1280x720`). |
+| `--inject-js <script>` | JavaScript code (as a string) to be executed on the page. |
+| `--inject-js-file <path>` | Path to a `.js` file with code to be injected. |
+| `--simulate-form <json>` | Fills fields and performs actions based on a JSON array. |
+| `--headless` | Runs the browser in "headless" mode, without a graphical window. |
+| `--human` | Waits for the user to click a floating button before continuing. |
+| `--delay <ms>` | Waits for a specified time (in milliseconds) before proceeding with actions. |
+| `--timeout <ms>` | Sets the maximum execution time (in ms) for page loading. |
+| `--output <json|text>` | Sets the output format (default: `text`). |
+| `--verbose` | Displays detailed logs for each execution step. |
+| `-h, --help` | Shows CLI help. |
+| `-v, --version` | Displays the ScreenX version. |
