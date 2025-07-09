@@ -11,25 +11,18 @@ ScreenX is a command-line interface (CLI) tool built with Node.js and Puppeteer 
 
 ## Installation
 
-To use ScreenX, you need to have Node.js installed. Then, simply clone the repository and install the dependencies.
+To use ScreenX, you need to have Node.js installed. Install the package globally via npm:
 
 ```bash
-# Clone the repository (replace with the correct URL when available)
-git clone https://github.com/BrOrlandi/ScreenX.git
-
-# Navigate to the project directory
-cd ScreenX
-
-# Install dependencies
-npm install
+npm install -g screenx
 ```
 
 ## Usage
 
-The base command is simple. You can run it directly with `node index.js` or, after a global installation (`npm install -g .`), just with `screenx`.
+After global installation, you can run the `screenx` command directly from your terminal.
 
 ```bash
-node index.js [options] <url>
+screenx [options] <url>
 ```
 
 ### Usage Examples
@@ -39,7 +32,7 @@ node index.js [options] <url>
 Takes a screenshot of a page and saves it to a file.
 
 ```bash
-node index.js --screenshot google.png https://google.com
+screenx --screenshot google.png https://google.com
 ```
 
 **2. Form Simulation (Google Search)**
@@ -47,7 +40,7 @@ node index.js --screenshot google.png https://google.com
 Fills a search term on Google, presses Enter, and takes a screenshot of the results page.
 
 ```bash
-node index.js --screenshot results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' https://www.google.com
+screenx --screenshot results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' https://www.google.com
 ```
 
 **3. Human Interaction (CAPTCHA Solving)**
@@ -55,7 +48,7 @@ node index.js --screenshot results.png --simulate-form '[{"action":"type", "sele
 If you encounter a CAPTCHA, use the `--human` mode. The script will pause and display a "Click to continue" button on the page, giving you time to solve the challenge before proceeding.
 
 ```bash
-node index.js --screenshot human-results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' --human https://www.google.com
+screenx --screenshot human-results.png --simulate-form '[{"action":"type", "selector":"textarea[name=q]", "value":"Artificial Intelligence"}, {"action":"press", "key":"Enter"}]' --human https://www.google.com
 ```
 
 ## Available Parameters

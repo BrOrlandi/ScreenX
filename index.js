@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { parseCliArgs } from './src/cli.js';
+import { program } from 'commander'; // Added import for commander program
 import { launchBrowser, closeBrowser } from './src/browser.js';
 import {
   goToPage,
@@ -16,8 +17,8 @@ async function main() {
   const { options, url } = parseCliArgs();
 
   if (!url) {
-    console.error('Error: URL is required');
-    process.exit(1);
+    program.help(); // Display help message
+    process.exit(0); // Exit cleanly after showing help
   }
 
   const { browser, page } = await launchBrowser(options);
