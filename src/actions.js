@@ -2,7 +2,36 @@ import fs from 'fs';
 import path from 'path';
 
 export async function goToPage(page, url) {
-  await page.goto(url, { waitUntil: 'networkidle2' });
+  const protocols = ['https://', 'http://'];
+  let finalUrl = url;
+  let navigationSuccessful = false;
+  let lastError = null;
+
+  // If URL already has a protocol, use it directly
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    try {
+      await page.goto(url, { waitUntil: 'networkidle2' });
+      navigationSuccessful = true;
+    } catch (error) {
+      lastError = error;
+    }
+  } else {
+    // Try with common protocols
+    for (const protocol of protocols) {
+      finalUrl = protocol + url;
+      try {
+        await page.goto(finalUrl, { waitUntil: 'networkidle2' });
+        navigationSuccessful = true;
+        break; // Success, no need to try other protocols
+      } catch (error) {
+        lastError = error;
+      }
+    }
+  }
+
+  if (!navigationSuccessful) {
+    throw new Error(`Failed to navigate to ${url} after trying with protocols. Last error: ${lastError.message}`);
+  }
 }
 
 export async function handleScroll(page, options) {
