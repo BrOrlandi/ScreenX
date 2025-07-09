@@ -53,21 +53,21 @@ node index.js --screenshot human-results.png --simulate-form '[{"action":"type",
 
 ## Available Parameters
 
-| Parameter | Description |
-|---|---|
-| `<url>` | **Required.** URL to open (including `localhost`). |
-| `--screenshot <path>` | Path where the screenshot will be saved. |
-| `--fullpage` | Captures the entire page by automatically scrolling. |
-| `--scroll <px>` | Scrolls the page by X pixels before any other action. |
-| `--resolution <WxH>` | Sets the browser window resolution (default: `1280x720`). |
-| `--inject-js <script>` | JavaScript code (as a string) to be executed on the page. |
-| `--inject-js-file <path>` | Path to a `.js` file with code to be injected. |
-| `--simulate-form <json>` | Fills fields and performs actions based on a JSON array. |
-| `--headless` | Runs the browser in "headless" mode, without a graphical window. |
-| `--human` | Waits for the user to click a floating button before continuing. |
-| `--delay <ms>` | Waits for a specified time (in milliseconds) before proceeding with actions. |
-| `--timeout <ms>` | Sets the maximum execution time (in ms) for page loading. |
-| `--output <json|text>` | Sets the output format (default: `text`). |
-| `--verbose` | Displays detailed logs for each execution step. |
-| `-h, --help` | Shows CLI help. |
-| `-v, --version` | Displays the ScreenX version. |
+| Parameter                 | Description                                                                  |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| `<url>`                   | **Required.** URL to open (including `localhost`).                           |
+| `--screenshot <path>`     | Path where the screenshot will be saved.                                     |
+| `--fullpage`              | Captures the entire page by automatically scrolling.                         |
+| `--scroll <px>`           | Scrolls the page by X pixels before any other action.                        |
+| `--resolution <WxH>`      | Sets the browser window resolution (default: `1280x720`).                    |
+| `--inject-js <script>`    | JavaScript code (as a string) to be executed on the page.                    |
+| `--inject-js-file <path>` | Path to a `.js` file with code to be injected.                               |
+| `--simulate-form <json>`  | Fills fields and performs actions based on a JSON array.                     |
+| `--headless`              | Runs the browser in "headless" mode, without a graphical window.             |
+| `--human`                 | Waits for the user to click a floating button before continuing.             |
+| `--delay <ms>`            | Waits for a specified time (in milliseconds) before proceeding with actions. |
+| `--timeout <ms>`          | Sets the maximum execution time (in ms) for page loading.                    |
+| `--output <json\|text>`   | Sets the output format (default: `text`).                                    |
+| `--verbose`               | Displays detailed logs for each execution step.                              |
+| `-h, --help`              | Shows CLI help.                                                              |
+| `-v, --version`           | Displays the ScreenX version.                                                |
