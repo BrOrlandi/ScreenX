@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "screenx": "./index.js"
+    "screenx": "index.js"
   },
   "files": [
     "index.js",
