@@ -3,6 +3,7 @@
 <div align="center">
 <img src="logo.png" alt="ScreenX Logo" width="350"/>
 <p></p>
+[![npm version](https://img.shields.io/npm/v/screenx.svg)](https://www.npmjs.com/package/screenx)
 </div>
 
 ScreenX is a command-line interface (CLI) tool built with Node.js and Puppeteer that allows you to automate interactions with web pages. You can open URLs, take screenshots, inject scripts, fill out forms, and much more. It's a versatile tool for both human-driven and AI-driven automation tasks.

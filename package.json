@@ -7,6 +7,12 @@
   "bin": {
     "screenx": "./index.js"
   },
+  "files": [
+    "index.js",
+    "src/",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +24,19 @@
     "screenshot",
     "browser"
   ],
-  "author": "",
+  "author": "Bruno Orlandi",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrOrlandi/ScreenX.git"
+  },
+  "homepage": "https://github.com/BrOrlandi/ScreenX#readme",
+  "bugs": {
+    "url": "https://github.com/BrOrlandi/ScreenX/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "commander": "^12.1.0",
     "puppeteer": "^22.12.1"
