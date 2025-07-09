@@ -1,6 +1,6 @@
 {
   "name": "screenx",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CLI to open a browser page, take screenshots, inject scripts, and automate interactions.",
   "main": "index.js",
   "type": "module",
