@@ -16,16 +16,16 @@ async function main() {
   const { options, url } = parseCliArgs();
 
   if (!url) {
-    console.error('Erro: URL é obrigatória');
+    console.error('Error: URL is required');
     process.exit(1);
   }
 
   const { browser, page } = await launchBrowser(options);
 
   try {
-    if (options.verbose) console.log(`Carregando URL: ${url}`);
+    if (options.verbose) console.log(`Loading URL: ${url}`);
     await goToPage(page, url);
-    if (options.verbose) console.log('Página carregada com sucesso');
+    if (options.verbose) console.log('Page loaded successfully');
 
     await handleScroll(page, options);
     await handleDelay(page, options);
@@ -35,10 +35,10 @@ async function main() {
     await takeScreenshot(page, options);
 
   } catch (error) {
-    console.error(`Ocorreu um erro durante a execução: ${error.message}`);
+    console.error(`An error occurred during execution: ${error.message}`);
     process.exit(1);
   } finally {
-    if (options.verbose) console.log('Fechando o navegador.');
+    if (options.verbose) console.log('Closing the browser.');
     await closeBrowser(browser);
   }
 }

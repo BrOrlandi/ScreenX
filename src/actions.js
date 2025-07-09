@@ -8,13 +8,13 @@ export async function goToPage(page, url) {
 export async function handleScroll(page, options) {
   if (options.scroll) {
     await page.evaluate(px => window.scrollBy(0, px), options.scroll);
-    if (options.verbose) console.log(`Scroll de ${options.scroll}px realizado`);
+    if (options.verbose) console.log(`Scrolled by ${options.scroll}px`);
   }
 }
 
 export async function handleDelay(page, options) {
   if (options.delay) {
-    await page.waitForTimeout(options.delay);
+    await new Promise(r => setTimeout(r, options.delay));
   }
 }
 
@@ -27,19 +27,19 @@ export async function simulateForm(page, options) {
       switch (actionType) {
         case 'type':
           await page.type(action.selector, action.value);
-          if (options.verbose) console.log(`Preenchido ${action.selector} com ${action.value}`);
+          if (options.verbose) console.log(`Filled '${action.selector}' with '${action.value}'`);
           break;
 
         case 'press':
           await page.keyboard.press(action.key);
-          if (options.verbose) console.log(`Tecla ${action.key} pressionada`);
+          if (options.verbose) console.log(`Pressed key '${action.key}'`);
           // Use a fixed delay to wait for navigation, as waitForNavigation can be flaky with CAPTCHAs.
-          if (options.verbose) console.log('Aguardando 5 segundos para a página carregar...');
+          if (options.verbose) console.log('Waiting 5 seconds for page to load...');
           await new Promise(r => setTimeout(r, 5000));
           break;
 
         default:
-          if (options.verbose) console.warn(`Ação desconhecida no simulate-form: ${actionType}`);
+          if (options.verbose) console.warn(`Unknown action in --simulate-form: ${actionType}`);
       }
     }
   }
@@ -65,7 +65,7 @@ export async function injectJs(page, options) {
 
 export async function waitForHuman(page, options) {
   if (options.human) {
-    if (options.verbose) console.log('Aguardando interação humana...');
+    if (options.verbose) console.log('Waiting for human interaction...');
     
     let attempts = 0;
     const maxAttempts = 15; // Try for 15 seconds
@@ -81,7 +81,7 @@ export async function waitForHuman(page, options) {
             } else {
               // If not, create it.
               const btn = document.createElement('button');
-              btn.innerText = 'Clique para continuar';
+              btn.innerText = 'Click to continue';
               btn.style.position = 'fixed';
               btn.style.bottom = '20px';
               btn.style.right = '20px';
@@ -107,7 +107,7 @@ export async function waitForHuman(page, options) {
       } catch (error) {
         if (error.message.includes('Execution context was destroyed') || error.message.includes('Target closed')) {
           attempts++;
-          if (options.verbose) console.log(`Página instável, nova tentativa em 1s... (${attempts}/${maxAttempts})`);
+          if (options.verbose) console.log(`Page unstable, retrying in 1s... (${attempts}/${maxAttempts})`);
           await new Promise(r => setTimeout(r, 1000));
         } else {
           throw error; // Re-throw other unexpected errors
@@ -116,7 +116,7 @@ export async function waitForHuman(page, options) {
     }
 
     if (!injectedAndClicked) {
-      console.error('Não foi possível confirmar a interação humana após várias tentativas.');
+      console.error('Could not confirm human interaction after several attempts.');
     }
   }
 }
@@ -124,7 +124,7 @@ export async function waitForHuman(page, options) {
 export async function takeScreenshot(page, options) {
   if (options.screenshot) {
     await page.screenshot({ path: options.screenshot, fullPage: !!options.fullpage });
-    if (options.verbose) console.log(`Screenshot salvo em ${options.screenshot}`);
+    if (options.verbose) console.log(`Screenshot saved to ${options.screenshot}`);
     if (options.output === 'text') console.log(options.screenshot);
   }
 }
